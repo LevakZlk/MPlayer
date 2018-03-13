@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MPlayer.Models.MusicModel>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        @using (@Html.BeginForm("Filter", "Music"))
+        {
+            <td>
+                Search Text
+            </td>
+            <td>
+                @Html.TextBox("SearchString")
+
+            </td>
+            <td>
+                Search Type
+            </td>
+            <td>
+                @Html.DropDownList("SearchType", MPlayer.Models.MusicModel.GetSearchType, new {@class = "form-control"})
+            </td>
+            <td>
+
+                <input type="submit" value="Search"/>
+
+
+            </td>
+        }
+
+    </tr>
+</table>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Play
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SingerName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <audio controls>
+                        <source src="@item.Path" />
+                    </audio>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenreName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SingerName)
+                </td>
+                <td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        <span>/</span>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>

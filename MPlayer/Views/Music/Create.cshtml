@@ -1,0 +1,54 @@
+﻿
+@model MPlayer.Models.MusicChangeModel
+
+
+@using (Html.BeginForm("Create", "Music",FormMethod.Post,new { enctype = "multipart/form-data"}))
+{
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+        <h4>Create music file in DB</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            Name
+                @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+           
+        </div>
+        <div class="form-group">
+            Singer
+
+                @Html.DropDownListFor(model=>model.SingerId, MPlayer.Models.MusicChangeModel.GetSingerSelectItems, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            Genre
+
+            @Html.DropDownListFor(model => model.GenreId, MPlayer.Models.MusicChangeModel.GetGenreSelectItems, new {@class = "form-control"})
+
+        </div>
+
+          <div class="form-group">
+                            @Html.TextBoxFor(m => m.File, new
+                            {
+                                type = "file",accept="audio/*"
+                            
+                            })
+                            @Html.ValidationMessageFor(m => m.File)
+        </div>
+
+          <div class="form-group">
+               <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+              </div>
+          </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "MusicView")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

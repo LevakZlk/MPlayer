@@ -1,0 +1,15 @@
+﻿@model MPlayer.Models.MusicModel
+
+<div>
+    <h4>MusicDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayFor(model => model.DeleteMusic)
+        </dt>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "MusicView")
+</p>

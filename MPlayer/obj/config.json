@@ -1,0 +1,11 @@
+{
+   "packageUrl": "http://localhost:50/obj/update.zip",
+   "packageFileName": "update.zip",
+    "packageConfigName": "config.json",
+    "forceUpdate": "false",
+    "output": ".\\",
+    "processStart": "CalcEnergy.exe",
+    "version": "1.1.0.0",
+"checkEvery": 30,
+"intervalType": "Second"
+}

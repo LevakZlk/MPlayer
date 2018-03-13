@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MPlayer.Models.MusicModel>
+ Playlist: @Model.First().PlaylistName
+<table class="table">
+    <tr>
+        <th>
+            Play
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SingerName)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <audio controls>
+                <source src="@item.Path" />
+            </audio>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GenreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SingerName)
+        </td>
+    </tr>
+}
+
+</table>
