@@ -1,0 +1,11 @@
+.vs
+obj
+/MPlayer/bin
+/MPlayer/obj
+/MPlayer.BLL/bin
+/MPlayer.BLL/obj
+/MPlayer.DAL/bin
+/MPlayer.DAL/obj
+/MPlayer.Tests/bin
+/MPlayer.Tests/obj
+bin
